@@ -41,11 +41,11 @@ use ArrayIterator;
 
 class Cursor extends ArrayIterator
 {
-    public function __construct(array $points)
+    public function __construct($resultset, array $points)
     {
         $rows = [];
         foreach ($points as $row) {
-            $row    = (object)array_combine($points['columns'], $row);
+            $row    = (object)array_combine($resultset->columns, $row);
             $rows[] = $row;
         }
         parent::__construct($rows);
